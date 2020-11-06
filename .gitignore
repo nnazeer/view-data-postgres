@@ -1,0 +1,6 @@
+.bundle/
+Gemfile.lock
+*.gem
+gems
+settings/view_data_pg.json
+/test/package/installed

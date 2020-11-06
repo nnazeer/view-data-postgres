@@ -1,0 +1,14 @@
+{
+  "dbname": "view_data",
+  "host": "localhost",
+  "hostaddr": "127.0.0.1",
+  "port": 5432,
+  "user": "view_data",
+  "password": null,
+  "connectTimeout": null,
+  "options": null,
+  "sslmode": null,
+  "krbsrvname": null,
+  "gsslib": null,
+  "service": null
+}
