@@ -21,6 +21,24 @@ module ViewData
           def configure
             ::Telemetry.configure(self)
           end
+
+          def deleted?(&blk)
+            deleted = sink.recorded_once? do |record|
+              record.signal == :deleted
+            end
+
+            if !deleted
+              return false
+            end
+
+            if blk.nil?
+              return true
+            end
+
+            sink.recorded_once? do |record|
+              blk.call(record.data.name, record.data.identifier)
+            end
+          end
         end
       end
     end

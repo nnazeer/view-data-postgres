@@ -71,7 +71,7 @@ module ViewData
         logger.info(tag: :data) { "SQL: #{statement}" }
         logger.info(tag: :data) { pkey_values.pretty_inspect }
 
-        telemetry.record(:deleted)
+        telemetry.record(:deleted, Telemetry::Data.new(delete.name, delete.identifier))
       end
 
       def double_quote(text)

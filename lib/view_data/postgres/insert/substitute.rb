@@ -21,6 +21,24 @@ module ViewData
           def configure
             ::Telemetry.configure(self)
           end
+
+          def inserted?(&blk)
+            inserted = sink.recorded_once? do |record|
+              record.signal == :inserted
+            end
+
+            if !inserted
+              return false
+            end
+
+            if blk.nil?
+              return true
+            end
+
+            sink.recorded_once? do |record|
+              blk.call(record.data.name, record.data.identifier, record.data.data)
+            end
+          end
         end
       end
     end

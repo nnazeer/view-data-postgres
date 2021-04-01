@@ -11,6 +11,7 @@ require 'async_invocation'
 
 require 'view_data/postgres/log'
 require 'view_data/postgres/settings'
+require 'view_data/postgres/session/substitute'
 require 'view_data/postgres/session'
 
 require 'view_data/postgres/expected_version'

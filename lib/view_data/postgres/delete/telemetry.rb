@@ -11,6 +11,8 @@ module ViewData
         def self.sink
           Sink.new
         end
+
+        Data = Struct.new(:name, :identifier)
       end
 
       def self.register_telemetry_sink(receiver)

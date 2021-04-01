@@ -77,7 +77,7 @@ module ViewData
           logger.info(tag: :data) { "SQL: #{statement}" }
           logger.info(tag: :data) { values.pretty_inspect }
 
-          telemetry.record(:inserted)
+          telemetry.record(:inserted, Telemetry::Data.new(create.name, create.identifier, create.data))
         rescue PG::UniqueViolation
           if strict
             raise UniqueViolation

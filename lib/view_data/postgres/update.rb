@@ -85,7 +85,7 @@ module ViewData
         logger.info(tag: :data) { "SQL: #{statement}" }
         logger.info(tag: :data) { values.pretty_inspect }
 
-        telemetry.record(:updated)
+        telemetry.record(:updated, Telemetry::Data.new(update.name, update.identifier, update.data))
       end
 
       def double_quote(text)
