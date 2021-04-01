@@ -16,7 +16,9 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'pg'
 
+  spec.add_runtime_dependency 'evt-dependency'
   spec.add_runtime_dependency 'evt-settings'
+  spec.add_runtime_dependency 'evt-telemetry'
   spec.add_runtime_dependency 'evt-view_data-commands'
 
   spec.add_development_dependency 'test_bench'

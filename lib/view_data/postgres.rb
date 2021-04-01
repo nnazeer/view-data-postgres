@@ -1,6 +1,8 @@
 require 'pg'
 
+require 'dependency'
 require 'log'
+require 'telemetry'
 require 'schema'
 require 'set_attributes'
 require 'settings'
@@ -14,8 +16,16 @@ require 'view_data/postgres/session'
 require 'view_data/postgres/expected_version'
 
 require 'view_data/postgres/insert'
+require 'view_data/postgres/insert/substitute'
+require 'view_data/postgres/insert/telemetry'
+
 require 'view_data/postgres/update'
+require 'view_data/postgres/update/substitute'
+require 'view_data/postgres/update/telemetry'
+
 require 'view_data/postgres/delete'
+require 'view_data/postgres/delete/substitute'
+require 'view_data/postgres/delete/telemetry'
 
 require 'view_data/postgres/query'
 

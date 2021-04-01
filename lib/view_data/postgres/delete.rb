@@ -5,6 +5,7 @@ module ViewData
       include Log::Dependency
 
       dependency :session, Session
+      dependency :telemetry, Telemetry
 
       def self.build(session: nil)
         instance = new
@@ -14,6 +15,7 @@ module ViewData
 
       def configure(session: nil)
         Session.configure(self, session: session)
+        ::Telemetry.configure(self)
       end
 
       def self.configure(receiver, session: nil, attr_name: nil)
@@ -68,6 +70,8 @@ module ViewData
         logger.info { "Deleted row (Table: #{table_name}, Identifier: #{delete.identifier.inspect})" }
         logger.info(tag: :data) { "SQL: #{statement}" }
         logger.info(tag: :data) { pkey_values.pretty_inspect }
+
+        telemetry.record(:deleted)
       end
 
       def double_quote(text)

@@ -5,6 +5,7 @@ module ViewData
       include Log::Dependency
 
       dependency :session, Session
+      dependency :telemetry, Telemetry
 
       def self.build(session: nil)
         instance = new
@@ -14,6 +15,7 @@ module ViewData
 
       def configure(session: nil)
         Session.configure(self, session: session)
+        ::Telemetry.configure(self)
       end
 
       def self.configure(receiver, session: nil, attr_name: nil)
@@ -74,6 +76,8 @@ module ViewData
           logger.info { "Inserted row (Table: #{table_name}, Identifier: #{create.identifier.inspect})" }
           logger.info(tag: :data) { "SQL: #{statement}" }
           logger.info(tag: :data) { values.pretty_inspect }
+
+          telemetry.record(:inserted)
         rescue PG::UniqueViolation
           if strict
             raise UniqueViolation
