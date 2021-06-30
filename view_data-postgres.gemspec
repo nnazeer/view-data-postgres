@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
 
   spec.authors = ['Joseph Choe']
   spec.email = ['joseph@josephchoe.com']
-  spec.homepage = 'https://github.com/hyperluminum/view-data-postgres'
+  spec.homepage = 'https://github.com/josephchoe/view-data-postgres'
 
   spec.require_paths = ['lib']
   spec.files = Dir.glob('{lib}/**/*')
