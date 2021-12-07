@@ -17,6 +17,7 @@ require 'view_data/postgres/controls/table/optimistic_lock'
 require 'view_data/postgres/controls/table/password'
 require 'view_data/postgres/controls/table/empty'
 require 'view_data/postgres/controls/table/nil_key'
+require 'view_data/postgres/controls/table/truncate'
 
 require 'view_data/postgres/controls/message_data/message_class'
 require 'view_data/postgres/controls/message_data/read'
