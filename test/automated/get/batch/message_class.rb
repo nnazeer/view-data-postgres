@@ -7,7 +7,7 @@ context "Get" do
 
       column_value = SecureRandom.hex(7)
 
-      position = Controls::Row::Get::MaxPosition.(table: table)
+      Controls::Table::Truncate.(table: table)
 
       id = Controls::Row::Put.(table: table, column_value: column_value)
 
@@ -15,7 +15,7 @@ context "Get" do
 
       message_class = Controls::MessageClass.example
 
-      messages = ViewData::Postgres::Get::Batch.(query: query, message_class: message_class, position: position, batch_size: 2)
+      messages = ViewData::Postgres::Get::Batch.(query: query, message_class: message_class, batch_size: 2)
 
       message = messages.first
 

@@ -7,13 +7,13 @@ context "Get" do
 
       column_value = SecureRandom.hex(7)
 
-      position = Controls::Row::Get::MaxPosition.(table: table)
+      Controls::Table::Truncate.(table: table)
 
       id = Controls::Row::Put.(table: table, column_value: column_value)
 
       query = Controls::Query::Position.example
 
-      messages = ViewData::Postgres::Get::Batch.(query: query, position: position, batch_size: 1)
+      messages = ViewData::Postgres::Get::Batch.(query: query, batch_size: 1)
 
       message = messages.first
 

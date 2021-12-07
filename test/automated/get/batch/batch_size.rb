@@ -5,6 +5,8 @@ context "Get" do
     context "Batch Size" do
       table = Controls::Table.name
 
+      Controls::Table::Truncate.()
+
       Controls::Row::Put.(table: table, instances: 3)
 
       query = Controls::Query::Position.example

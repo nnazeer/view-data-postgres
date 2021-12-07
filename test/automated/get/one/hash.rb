@@ -7,9 +7,11 @@ context "Get" do
 
       column_value = SecureRandom.hex(7)
 
+      Controls::Table::Truncate.(table: table)
+
       id = Controls::Row::Put.(table: table, column_value: column_value)
 
-      query = Controls::Query::Parameters.example(id: id)
+      query = Controls::Query.example
 
       message = ViewData::Postgres::Get::One.(query: query)
 
